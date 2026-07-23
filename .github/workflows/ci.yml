@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  e2e:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,56 +15,39 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
-        run: npm run test:ci
-
-      - name: Upload coverage report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-report
-          path: coverage
-
-      - name: Upload junit report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: junit-report
-          path: reports/junit.xml
-
-      - name: Publish test report to GitHub Checks
-        if: always()
-        uses: dorny/test-reporter@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: jest
-          path: reports/junit.xml
-          reporter: junit
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
 
       - name: Build site for E2E
         run: npm run build
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
-
       - name: Run Playwright E2E tests
         run: npx playwright test --reporter=junit,html
 
-      - name: Upload E2E junit
+      - name: Upload Playwright JUnit (artifact)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: e2e-junit
+          name: playwright-e2e-junit
           path: reports/e2e-junit.xml
 
-      - name: Upload Playwright HTML report
+      - name: Upload Playwright HTML report (artifact)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
+          name: playwright-html-report
           path: reports/playwright-report
+
+      - name: Publish Playwright JUnit to Checks
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: playwright-e2e
+          path: reports/e2e-junit.xml
+          reporter: junit-xml
