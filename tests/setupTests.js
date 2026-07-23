@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 // Basic mocks for Next navigation helpers used across components
 jest.mock('next/navigation', () => ({

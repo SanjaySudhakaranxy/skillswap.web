@@ -36,3 +36,12 @@ jobs:
         with:
           name: junit-report
           path: reports/junit.xml
+
+      - name: Publish test report to GitHub Checks
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: jest
+          path: reports/junit.xml
+          reporter: junit

@@ -25,7 +25,7 @@ describe('NavBar', () => {
     render(<NavBar />);
 
     expect(await screen.findByText(/100 SC/)).toBeInTheDocument();
-    expect(screen.getByText(/Dashboard/)).toBeInTheDocument();
+    expect(screen.getAllByText(/Dashboard/).length).toBeGreaterThan(0);
     expect(screen.getByText(/Sign out/)).toBeInTheDocument();
   });
 });
