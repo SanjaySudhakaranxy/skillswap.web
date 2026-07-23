@@ -50,4 +50,3 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: playwright-e2e
           path: reports/e2e-junit.xml
-          reporter: junit-xml
