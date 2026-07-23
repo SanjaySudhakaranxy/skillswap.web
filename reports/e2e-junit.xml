@@ -1,0 +1,6 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="8.375388">
+<testsuite name="landing.spec.js" timestamp="2026-07-23T11:10:05.888Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.489" errors="0">
+<testcase name="landing page shows hero and links" classname="landing.spec.js" time="1.489">
+</testcase>
+</testsuite>
+</testsuites>
