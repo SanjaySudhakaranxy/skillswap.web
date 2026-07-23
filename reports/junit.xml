@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="4" failures="0" errors="0" time="14.667">
+  <testsuite name="NavBar" errors="0" failures="0" skipped="0" timestamp="2026-07-23T10:53:11" time="6.21" tests="1">
+    <testcase classname="NavBar renders links and balance when user present" name="NavBar renders links and balance when user present" time="0.367">
+    </testcase>
+  </testsuite>
+  <testsuite name="Shell" errors="0" failures="0" skipped="0" timestamp="2026-07-23T10:53:18" time="2.176" tests="1">
+    <testcase classname="Shell renders title, subtitle and children" name="Shell renders title, subtitle and children" time="0.028">
+    </testcase>
+  </testsuite>
+  <testsuite name="LandingPage" errors="0" failures="0" skipped="0" timestamp="2026-07-23T10:53:20" time="2.421" tests="2">
+    <testcase classname="LandingPage renders the hero, onboarding steps, and footer content" name="LandingPage renders the hero, onboarding steps, and footer content" time="0.229">
+    </testcase>
+    <testcase classname="LandingPage provides the primary sign-up links" name="LandingPage provides the primary sign-up links" time="0.057">
+    </testcase>
+  </testsuite>
+</testsuites>
