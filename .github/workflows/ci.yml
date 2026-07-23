@@ -27,14 +27,7 @@ jobs:
         run: npm run build
 
       - name: Run Playwright E2E tests
-        run: npx playwright test --reporter=junit,html
-
-      - name: Upload Playwright JUnit (artifact)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-e2e-junit
-          path: reports/e2e-junit.xml
+        run: npx playwright test --reporter=html
 
       - name: Upload Playwright HTML report (artifact)
         if: always()
@@ -42,11 +35,3 @@ jobs:
         with:
           name: playwright-html-report
           path: reports/playwright-report
-
-      - name: Publish Playwright JUnit to Checks
-        if: always()
-        uses: dorny/test-reporter@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: playwright-e2e
-          path: reports/e2e-junit.xml

@@ -6,7 +6,6 @@ module.exports = defineConfig({
   expect: { timeout: 5000 },
   reporter: [
     ['list'],
-    ['junit', { outputFile: 'reports/e2e-junit.xml' }],
     ['html', { outputFolder: 'reports/playwright-report', open: 'never' }],
   ],
   use: {
