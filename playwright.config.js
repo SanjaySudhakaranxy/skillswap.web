@@ -7,6 +7,7 @@ module.exports = defineConfig({
   reporter: [
     ['list'],
     ['html', { outputFolder: 'reports/playwright-report', open: 'never' }],
+    ...(process.env.CI ? [['github']] : []),
   ],
   use: {
     baseURL: 'http://localhost:3001',
