@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  NEXT_PUBLIC_SUPABASE_URL: http://localhost:8000
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: test-anon-key
+
 jobs:
   e2e:
     runs-on: ubuntu-latest

@@ -9,7 +9,7 @@ module.exports = defineConfig({
     ['html', { outputFolder: 'reports/playwright-report', open: 'never' }],
   ],
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:3001',
     headless: true,
     ignoreHTTPSErrors: true,
     viewport: { width: 1280, height: 720 },
@@ -18,8 +18,8 @@ module.exports = defineConfig({
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
   ],
   webServer: {
-    command: 'npm run start',
-    port: 3000,
+    command: 'npx next dev -p 3001',
+    port: 3001,
     timeout: 120_000,
     reuseExistingServer: false,
     env: {
