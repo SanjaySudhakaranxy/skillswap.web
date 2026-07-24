@@ -31,7 +31,7 @@ jobs:
         run: npm run build
 
       - name: Run Playwright E2E tests
-        run: npx playwright test --reporter=html
+        run: npx playwright test
 
       - name: Upload Playwright HTML report (artifact)
         if: always()
