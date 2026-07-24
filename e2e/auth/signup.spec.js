@@ -117,35 +117,3 @@ test.describe('Login page flow - Sign-up', () => {
   });
 });
 
-
-    // Error should still be visible
-    await expect(errorMessage).toBeVisible();
-
-    // Submit again - different error or success depends on implementation
-    await submitButton.click();
-  });
-
-  test('accepts valid form data', async ({ page }) => {
-    const nameInput = page.getByRole('textbox', { name: /Name/i });
-    const emailInput = page.locator('input[type="email"]');
-    const passwordInput = page.locator('input[type="password"]');
-    const submitButton = page.getByRole('button', { name: /Create account/i });
-
-    // Fill all fields with valid data
-    await nameInput.fill('Jane Smith');
-    await emailInput.fill('jane.smith@example.com');
-    await passwordInput.fill('ValidPassword123');
-
-    // No error should be visible yet
-    const errorMessage = page.locator('p.text-red-400');
-    const errorCount = await errorMessage.count();
-
-    // Submit the form
-    await submitButton.click();
-
-    // Form should either succeed or show an API-level error
-    // (not a validation error on the client side)
-    // If there's an error, it should be from the backend (e.g., email already exists)
-    // We can't fully test signup without a real backend, but we verify the form accepts valid input
-  });
-});
